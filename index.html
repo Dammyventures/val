@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Temmy 💕 | Valentine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --valentine-red: #FF3B6B;
+            --valentine-pink: #FF7BA3;
+            --valentine-light: #FFE4EC;
+            --valentine-gold: #FFD166;
+            --valentine-purple: #C780FA;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 59, 107, 0.2);
+            animation: floatUp 20s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Card */
+        .valentine-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px 50px;
+            max-width: 700px;
+            max-height: 670px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 
+                0 20px 60px rgba(255, 59, 107, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 0 30px rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            animation: cardEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 8px solid transparent;
+            background-clip: padding-box;
+        }
+
+        @keyframes cardEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .valentine-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 40px;
+            padding: 8px;
+            background: linear-gradient(45deg, var(--valentine-red), var(--valentine-purple), var(--valentine-pink));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderGlow 3s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                opacity: 0.7;
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                opacity: 1;
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* Name Styling */
+        .name {
+            font-family: 'Pacifico', cursive;
+            font-size: 5.5rem;
+            color: var(--valentine-red);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 3px 3px 0px rgba(255, 123, 163, 0.3);
+            animation: nameGlow 2s infinite alternate;
+        }
+
+        @keyframes nameGlow {
+            0% {
+                text-shadow: 3px 3px 0px rgba(255, 123, 163, 0.3),
+                             0 0 20px rgba(255, 59, 107, 0.3);
+            }
+            100% {
+                text-shadow: 3px 3px 0px rgba(255, 123, 163, 0.5),
+                             0 0 40px rgba(255, 59, 107, 0.6),
+                             0 0 60px rgba(255, 59, 107, 0.4);
+            }
+        }
+
+        /* Question Styling */
+        .question {
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 50px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .question::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--valentine-red), transparent);
+            border-radius: 2px;
+        }
+
+        /* BUTTONS CONTAINER - SIDE BY SIDE */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin: 60px 0 40px;
+            position: relative;
+            min-height: 120px;
+        }
+
+        /* Button Styling */
+        .val-btn {
+            padding: 25px 60px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 200px;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .val-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            z-index: -1;
+            border-radius: inherit;
+        }
+
+        .val-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            z-index: 2;
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .val-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* YES Button */
+        #yesBtn {
+            background: linear-gradient(45deg, var(--valentine-red), #FF6B8B);
+            color: white;
+            transform: scale(1);
+            animation: pulseYes 2s infinite;
+            position: relative;
+            left: 0;
+            transition: left 0.3s;
+        }
+
+        @keyframes pulseYes {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(255, 59, 107, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(255, 59, 107, 0.5);
+            }
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 20px 50px rgba(255, 59, 107, 0.6);
+        }
+
+        /* NO Button - Side by Side with YES */
+        #noBtn {
+            background: linear-gradient(45deg, #6c757d, #adb5bd);
+            color: white;
+            position: relative;
+            transition: all 0.3s ease-out;
+            transform: scale(1);
+            animation: floatNo 3s infinite ease-in-out;
+        }
+
+        @keyframes floatNo {
+            0%, 100% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        #noBtn:hover {
+            background: linear-gradient(45deg, #5a6268, #868e96);
+        }
+
+        /* Shy Message */
+        .shy-message {
+            color: #666;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealMessage 1s forwards 1.5s;
+            position: relative;
+            padding: 10px 20px;
+            background: rgba(255, 228, 236, 0.5);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        @keyframes revealMessage {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Celebration Effects */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s;
+        }
+
+        .success-content {
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 600px;
+            transform: scale(0.8);
+            transition: transform 0.8s;
+            box-shadow: 0 30px 80px rgba(255, 59, 107, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(to right, var(--valentine-red), var(--valentine-purple), var(--valentine-pink));
+        }
+
+        .success-title {
+            font-size: 4rem;
+            color: var(--valentine-red);
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .success-text {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Heart cursor */
+        body {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23FF3B6B' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E"), auto;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .valentine-card {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            .name {
+                font-size: 4rem;
+            }
+            
+            .question {
+                font-size: 2rem;
+            }
+            
+            .buttons-container {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+            
+            .val-btn {
+                padding: 20px 40px;
+                font-size: 1.5rem;
+                min-width: 160px;
+            }
+            
+            .success-content {
+                padding: 40px 20px;
+                margin: 20px;
+            }
+            
+            .success-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Hearts -->
+    <div class="bg-hearts" id="bgHearts"></div>
+    
+    <!-- Main Valentine Card -->
+    <div class="valentine-card">
+        <div class="name">Temmy</div>
+        <div class="question">will you be my valentine?</div>
+        
+        <!-- BUTTONS SIDE BY SIDE -->
+        <div class="buttons-container">
+            <button class="val-btn" id="yesBtn">Yes</button>
+            <button class="val-btn" id="noBtn">No</button>
+        </div>
+        
+        <div class="shy-message">"No" seems a bit shy</div>
+    </div>
+    
+    <!-- Celebration Effects -->
+    <div class="celebration" id="celebration"></div>
+    
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <div class="success-content">
+            <h2 class="success-title">Yes! 💖</h2>
+            <p class="success-text">
+                You just made this the best Valentine's Day ever! 
+                <br><br>
+                Get ready for the most amazing date filled with laughter, 
+                memories, and maybe a little magic...
+                <br><br>
+                <span style="color: var(--valentine-red); font-weight: 600;">Check your phone in 3...2...1... 📱✨</span>
+            </p>
+            <button class="val-btn" id="closeBtn" style="background: var(--valentine-purple); margin-top: 20px;">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <!-- Floating Emoji Decorations -->
+    <div id="floatingEmojis"></div>
+
+    <script>
+        // ========== CREATE BACKGROUND HEARTS ==========
+        function createBackgroundHearts() {
+            const container = document.getElementById('bgHearts');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('bg-heart');
+                heart.innerHTML = '❤️';
+                
+                // Random properties
+                const size = Math.random() * 40 + 20;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 15 + 15;
+                const opacity = Math.random() * 0.3 + 0.1;
+                
+                heart.style.left = `${left}%`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.opacity = opacity;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // ========== ESCAPING "NO" BUTTON - SIDE BY SIDE VERSION ==========
+        const noBtn = document.getElementById('noBtn');
+        const buttonsContainer = document.querySelector('.buttons-container');
+        let escapeCount = 0;
+        const shyMessages = [
+            "Are you sure?",
+            "Maybe think about it?",
+            "I'll be really sad!",
+            "Pretty please? 🥺",
+            "My heart will break!",
+            " click Yes! please",
+            "Don't break my heart!",
+            "I'll try harder!",
+            "Last chance to say Yes!",
+            "Okay, fine... you win! 😢"
+        ];
+        
+        // Function to move button randomly (but keep it visible)
+        function moveButton() {
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            // Calculate new position within container
+            // Keep button visible and within bounds
+            const maxX = containerRect.width - btnRect.width - 10;
+            const maxY = containerRect.height - btnRect.height - 10;
+            
+            // Make sure it doesn't go outside
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            // Apply movement with transition
+            noBtn.style.transition = 'all 0.3s ease-out';
+            noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
+            
+            // Change text after 3rd escape
+            escapeCount++;
+            if (escapeCount >= 3 && escapeCount <= 12) {
+                noBtn.textContent = shyMessages[escapeCount - 3];
+                
+                // Add emoji to the message
+                if (escapeCount >= 4) {
+                    noBtn.innerHTML = shyMessages[escapeCount - 3];
+                }
+            }
+            
+            // After 10 escapes, make it move faster
+            if (escapeCount >= 10) {
+                noBtn.style.transition = 'all 0.1s linear';
+                noBtn.style.cursor = 'not-allowed';
+                
+                // Move to random positions rapidly
+                const crazyInterval = setInterval(() => {
+                    const crazyX = Math.random() * maxX;
+                    const crazyY = Math.random() * maxY;
+                    const rotation = Math.random() * 20 - 10;
+                    noBtn.style.transform = `translate(${crazyX}px, ${crazyY}px) rotate(${rotation}deg)`;
+                }, 200);
+                
+                // Stop after 8 seconds
+                setTimeout(() => clearInterval(crazyInterval), 8000);
+            }
+            
+            // Prevent button from hiding behind Yes button
+            if (newX < 100 && newY < 50) {
+                // If too close to Yes button position, move it
+                noBtn.style.zIndex = '2';
+            }
+        }
+        
+        // Add event listeners for the "No" button
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+        
+        // Also escape when user tries to click it
+        noBtn.addEventListener('click', function(e) {
+            if (escapeCount < 3) {
+                e.preventDefault();
+                moveButton();
+            }
+        });
+        
+        // ========== "YES" BUTTON CELEBRATION ==========
+        const yesBtn = document.getElementById('yesBtn');
+        const celebration = document.getElementById('celebration');
+        const successMessage = document.getElementById('successMessage');
+        
+        yesBtn.addEventListener('click', function() {
+            // Create massive confetti celebration
+            createConfetti(150);
+            
+            // Show success message
+            successMessage.style.opacity = '1';
+            successMessage.style.pointerEvents = 'all';
+            setTimeout(() => {
+                successMessage.querySelector('.success-content').style.transform = 'scale(1)';
+            }, 50);
+            
+            // Play victory sound
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3');
+            audio.volume = 0.3;
+            audio.play();
+            
+            // Change card border to celebration mode
+            document.querySelector('.valentine-card').style.animation = 'borderGlow 1s infinite alternate';
+            
+            // Add floating emojis
+            createFloatingEmojis();
+            
+            // Make Yes button dance
+            yesBtn.style.animation = 'none';
+            setTimeout(() => {
+                yesBtn.style.animation = 'pulseYes 0.5s infinite';
+                yesBtn.style.transform = 'scale(1.2) rotate(10deg)';
+            }, 10);
+        });
+        
+        // ========== CONFETTI EFFECT ==========
+        function createConfetti(count) {
+            celebration.style.display = 'block';
+            
+            const colors = ['#FF3B6B', '#FF7BA3', '#FFD166', '#C780FA', '#6ECB63'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random properties
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const size = Math.random() * 15 + 5;
+                    const left = Math.random() * 100;
+                    const duration = Math.random() * 3 + 2;
+                    const delay = Math.random() * 2;
+                    const shape = Math.random() > 0.5 ? '50%' : '0';
+                    
+                    confetti.style.backgroundColor = color;
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.left = `${left}%`;
+                    confetti.style.top = '-20px';
+                    confetti.style.borderRadius = shape;
+                    confetti.style.animationDuration = `${duration}s`;
+                    confetti.style.animationDelay = `${delay}s`;
+                    
+                    celebration.appendChild(confetti);
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.remove();
+                        }
+                    }, (duration + delay) * 1000);
+                }, i * 20);
+            }
+            
+            // Hide celebration container after all confetti
+            setTimeout(() => {
+                celebration.style.display = 'none';
+            }, count * 20 + 5000);
+        }
+        
+        // ========== FLOATING EMOJIS ==========
+        function createFloatingEmojis() {
+            const container = document.getElementById('floatingEmojis');
+            const emojis = ['💖', '🥰', '💕', '😍', '💘', '💝', '💞', '✨', '🌹'];
+            
+            for (let i = 0; i < 20; i++) {
+                const emoji = document.createElement('div');
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.position = 'fixed';
+                emoji.style.fontSize = `${Math.random() * 40 + 20}px`;
+                emoji.style.left = `${Math.random() * 100}%`;
+                emoji.style.top = `${Math.random() * 100}%`;
+                emoji.style.zIndex = '999';
+                emoji.style.pointerEvents = 'none';
+                emoji.style.opacity = '0';
+                emoji.style.animation = `emojiFloat ${Math.random() * 3 + 2}s ease-in-out infinite alternate`;
+                
+                container.appendChild(emoji);
+                
+                // Add animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes emojiFloat {
+                        0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+                        100% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Fade in
+                setTimeout(() => {
+                    emoji.style.transition = 'opacity 1s';
+                    emoji.style.opacity = '0.8';
+                }, i * 100);
+            }
+        }
+        
+        // ========== CLOSE SUCCESS MESSAGE ==========
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            successMessage.style.opacity = '0';
+            successMessage.style.pointerEvents = 'none';
+            successMessage.querySelector('.success-content').style.transform = 'scale(0.8)';
+        });
+        
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create background hearts
+            createBackgroundHearts();
+            
+            // Add some initial floating emojis
+            setTimeout(createFloatingEmojis, 1000);
+            
+            // Add subtle glow effect to name
+            setInterval(() => {
+                const name = document.querySelector('.name');
+                name.style.filter = `hue-rotate(${Math.random() * 20}deg)`;
+            }, 3000);
+            
+            // Make Yes button slightly bounce occasionally
+            setInterval(() => {
+                yesBtn.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    yesBtn.style.transform = 'scale(1)';
+                }, 200);
+            }, 5000);
+        });
+        
+        // ========== TOUCH SUPPORT FOR MOBILE ==========
+        document.addEventListener('touchmove', function(e) {
+            // Prevent scrolling while interacting with the card
+            if (e.target.closest('.valentine-card')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Make No button also escape on touch for mobile
+        noBtn.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const element = document.elementFromPoint(touch.clientX, touch.clientY);
+            
+            // If touch is over the No button, move it
+            if (element === noBtn) {
+                moveButton();
+            }
+        });
+    </script>
+</body>
+</html>
